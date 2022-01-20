@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class DeckOfCards {
     private ArrayList<Card> deck;
@@ -31,6 +32,25 @@ public class DeckOfCards {
                 deck.add(newCard);
             }
         }
+    }
 
+    /**
+     * This method will shuffle the deck of cards
+     */
+    public void shuffle()
+    {
+        Collections.shuffle(deck);
+    }
+
+    /**
+     * This method will remove the top card from the deck.  If no cards are
+     * left in the deck, it will return null
+     */
+    public Card dealTopCard()
+    {
+        if (deck.size()>0)
+            return deck.remove(0);
+        else
+            return null;
     }
 }
