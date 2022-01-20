@@ -30,5 +30,7 @@ public class Main {
             System.out.println(e.getMessage());
         }
 
+        DeckOfCards deck = new DeckOfCards();
+
     }
 }
