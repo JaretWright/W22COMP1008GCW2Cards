@@ -9,8 +9,8 @@ public class Card {
      * of the card as arguments
      */
     public Card(String faceName,String suit) {
-        this.suit = suit;
-        this.faceName = faceName;
+        setSuit(suit);
+        setFaceName(faceName);
     }
 
     public String getSuit() {
@@ -22,11 +22,15 @@ public class Card {
     }
 
     /**
-     * This method will ensure that the argument is clubs, hearts, diamonds, spades"
+     * This method will ensure that the argument is one of clubs, hearts, diamonds, spades
      * @param suit - a String that represents the suit
      */
     public void setSuit(String suit) {
-        this.suit = suit;
+        suit = suit.toLowerCase();
+        if (getValidSuits().contains(suit))
+            this.suit = suit;
+        else
+            throw new IllegalArgumentException(suit + " was not in the valid list: "+getValidSuits());
     }
 
     /**
@@ -38,7 +42,24 @@ public class Card {
         return Arrays.asList("clubs", "hearts", "diamonds", "spades");
     }
 
+    /**
+     * This method will validate if the name is valid and set the instance variable
+     * @param faceName
+     */
     public void setFaceName(String faceName) {
-        this.faceName = faceName;
+        faceName = faceName.toLowerCase();
+
+        if (getValidFaceNames().contains(faceName))
+            this.faceName = faceName;
+        else
+            throw new IllegalArgumentException(faceName + " was not in " +getValidFaceNames());
+    }
+
+    /**
+     * This method will return a list of Strings with valid face names
+     */
+    public static List<String> getValidFaceNames()
+    {
+        return Arrays.asList("2","3","4","5","6","7","8","9","10","jack","queen","king","ace");
     }
 }
